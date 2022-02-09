@@ -1,5 +1,6 @@
 const express = require("express");
 const { animals } = require("./data/animals.json")
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -49,6 +50,11 @@ app.get("/api/animals", (req, res) => {
     res.json(results);
 });
 
-app.listen(3001, () => {
-    console.log("Hello world 3001!");
+app.listen(PORT, () => {
+    console.log(`API Server is now on port ${PORT}`);
 });
+
+// //remote: Verifying deploy... done.
+// To https://git.heroku.com/zookeeprtucker.git
+// * [new branch]      feature/MVP -> main
+//zookeeprtucker.herokuapp.com/
