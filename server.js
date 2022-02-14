@@ -1,20 +1,21 @@
-const express = require("express");
-const { animals } = require("./data/animals.json")
-const PORT = process.env.PORT || 3001;
+const express = require('express');
+const { animals } = require('./data/animals.json')
+
+const PORT = process.env.PORT || 3001
 
 const app = express();
 
 function filterByQuery(query, animalsArray) {
     let personalityTraitsArray = [];
-    //Note that we save the animalsArray as filteredResults here:
+    //Note that we sasve the animalsArray as filteredResults here:
     let filteredResults = animalsArray;
     if (query.personalityTraits) {
-        //save personalityTraits as a dedicated array.
-        //if personalityTraits is a string, place it into a new array and save.
+        //Save personalityTraits as a dedicated array.
+        //if personalityTraits is a string, place it into a new array and save
         if (typeof query.personalityTraits === 'string') {
             personalityTraitsArray = [query.personalityTraits];
         } else {
-            personalityTraitsArray = query.personalityTraits
+            personalityTraitsArray = query.personalityTraits;
         }
         // Loop through each trait in the personalityTraits array:
         personalityTraitsArray.forEach(trait => {
@@ -31,28 +32,29 @@ function filterByQuery(query, animalsArray) {
         });
     }
     if (query.diet) {
-        filteredResults = filteredResults.filter(animal => animal.diet === query.diet);
+        filteredResults = filteredResults.filter(animal => animal.diet === query.diet)
     }
     if (query.species) {
-        filteredResults = filteredResults.filter(animal => animal.species === query.species);
+        filteredResults = filteredResults.filter(animal => animal.species === query.species)
     }
     if (query.name) {
-        filteredResults = filteredResults.filter(animal => animal.name === query.name);
+        filteredResults = filteredResults.filter(animal => animal.name === query.name)
     }
     return filteredResults;
 }
 
-app.get("/api/animals", (req, res) => {
+//adding route that the front end can request data from
+app.get('/api/animals', (req, res) => {
     let results = animals;
     if (req.query) {
-        results = filterByQuery(req.query, results);
+        results = filterByQuery(req.query, results)
     }
-    res.json(results);
-});
+    res.json(results)
+})
 
 app.listen(PORT, () => {
-    console.log(`API Server is now on port ${PORT}`);
-});
+    console.log(`Api server now on port ${PORT}`)
+})
 
 // //remote: Verifying deploy... done.
 // To https://git.heroku.com/zookeeprtucker.git
