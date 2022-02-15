@@ -126,6 +126,24 @@
         "hungry"
       ],
       "id": "12"
+    },
+    {
+      "name": "biganimal",
+      "species": "uglyspecies",
+      "diet": "folivore",
+      "personalityTraits": [
+        "zany"
+      ],
+      "id": "13"
+    },
+    {
+      "name": "testing1",
+      "species": "speciess",
+      "diet": "piscivore",
+      "personalityTraits": [
+        "anxious"
+      ],
+      "id": "14"
     }
   ]
 }
